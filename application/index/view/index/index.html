@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>love</title>
+    <title>EASY LOVE</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -23,52 +23,209 @@
 
     <div class="content-main">
         <div class="container">
-            <h1>love</h1>
+            <h1 class="love-title">EASY LOVE</h1>
         </div>
     </div>
     <div class="content-secondary">
+        <style>
+            /**{*/
+                /*margin: 0;*/
+                /*padding: 0;*/
+            /*}*/
+            i{
+                color: #f40;
+            }
+            h1.love-title{
+                text-align: center;
+            }
+            .selfLover{
+                display: none;
+                /*width: 100%;*/
+            }
+        </style>
         <div class="container">
-            <form action="" onsubmit="return false">
-                <div class="form-group">
-                    <label >姓名</label>
-                    <input type="text" class="form-control" placeholder="姓名" name="username">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">邮箱</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
-                </div>
-                <div class="form-group">
-                    <label >TEL</label>
-                    <input type="text" class="form-control" placeholder="telphone" name="tel">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">头像</label>
-                    <input type="file" id="exampleInputFile" style="display: none" name="face"/>
-                    <button class="upload">上传图片</button>
-                    <img src="" class="imgg" style="width: 100%">
+
+            <form action="" onsubmit="return false" class="form-horizontal">
+                <div class="oneself" >
+                    <!--<div class="form-group">-->
+                        <!--<label for="inputPassword3" class="col-sm-2 control-label">Password</label>-->
+                        <!--<div class="col-sm-10">-->
+                            <!--<input type="password" class="form-control" id="inputPassword3" placeholder="Password">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="姓名" name="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">年龄<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="年龄" name="age">
+                        </div>
+                    </div>
+                    <div  class="form-group">
+                        <label class="col-sm-2 control-label">性别<i>*</i></label>
+                        <div class="col-sm-10" style="height: 34px;line-height: 34px">
+                            <label style="margin-right: 20px">
+                                <input type="radio" name="sex" value="male" checked style="margin-right: 5px">男
+                            </label>
+                            <label>
+                                <input type="radio" name="sex" value="female" style="margin-right: 5px">女
+                            </label>
+                        </div>
+
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label for="exampleInputEmail1">邮箱</label>-->
+                        <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">电话<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="telphone" name="tel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">微信号<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="weChat" name="wechat">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">家乡<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="广东深圳市" name="hometown">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">身高<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="身高cm" name="height">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">体重<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="体重kg" name="weight">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">职业<i>*</i></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="程序员" name="worker">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">月薪资范围</label>
+                        <div class="col-sm-10">
+                            <select class="form-control " name="salary">
+                                <option >请选择</option>
+                                <option >5k</option>
+                                <option>5-8K</option>
+                                <option>8-10K</option>
+                                <option>10-12K</option>
+                                <option>12-15K</option>
+                                <option>15-20K</option>
+                                <option>20K以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">学历<i>*</i></label>
+                        <div class="col-sm-10">
+                            <select class="form-control " name="education">
+                                <option >请选择</option>
+                                <option >高中</option>
+                                <option>专科</option>
+                                <option>本科</option>
+                                <option>研究生及以上</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 23px">
+                        <label class="col-sm-2 control-label" for="exampleInputFile">头像</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="exampleInputFile" style="display: none" name="face"/>
+                            <button class="upload">上传图片</button>
+                            <img src="" class="imgg" style="width: 100%;display: none">
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a href="javascript:;" class="btn btn-default next" style="width: 100%;background-color: #4288ce">提交</a>
+                    </div>
 
                 </div>
 
-                <div class="radio">
-                    <label for="">
-                        <input type="radio" name="sex" value="male" checked>男
-                    </label>
-                    <label for="">
-                        <input type="radio" name="sex" value="female">女
-                    </label>
-
+                <div class="selfLover" >
+                    <div class="form-group">
+                        <label >家乡</label>
+                        <input type="text" class="form-control" placeholder="广东深圳市" name="lover-hometown">
+                    </div>
+                    <div class="form-group">
+                        <label >身高</label>
+                        <input type="text" class="form-control" placeholder="身高cm" name="lover-height">
+                    </div>
+                    <div class="form-group">
+                        <label >体重</label>
+                        <input type="text" class="form-control" placeholder="体重kg" name="lover-weight">
+                    </div>
+                    <div class="form-group">
+                        <label >职业</label>
+                        <input type="text" class="form-control" placeholder="老师" name="lover-worker">
+                    </div>
+                    <div class="form-group">
+                        <label >月薪资范围</label>
+                        <select class="form-control" name="lover-salary">
+                            <option >请选择</option>
+                            <option >5k</option>
+                            <option>8K</option>
+                            <option>10K</option>
+                            <option>12K</option>
+                            <option>15K</option>
+                            <option>15K以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >学历</label>
+                        <select class="form-control" name="lover-education">
+                            <option >请选择</option>
+                            <option >高中</option>
+                            <option>专科</option>
+                            <option>本科</option>
+                            <option>研究生及以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >年龄段</label>
+                        <select class="form-control" name="age-range">
+                            <option >无特定要求</option>
+                            <option >18-25</option>
+                            <option>25-30</option>
+                            <option>30-35</option>
+                            <option>35-40</option>
+                            <option>40-45</option>
+                            <option>45-50</option>
+                            <option>50以上</option>
+                        </select>
+                    </div>
+                    <button class="btn defalut-btn finish" >提交</button>
                 </div>
-
-
-
-
                 <!--<div class="checkbox">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> Check me out-->
-                    <!--</label>-->
+                <!--<label>-->
+                <!--<input type="checkbox"> Check me out-->
+                <!--</label>-->
                 <!--</div>-->
-                <button type="submit" class="btn btn-default">Submit</button>
+
+
             </form>
+
         </div>
 
     </div>
@@ -85,8 +242,27 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
+var nextobj =document.getElementsByClassName('next')[0],
+    oneself =document.getElementsByClassName('oneself')[0],
+    selfLover =document.getElementsByClassName('selfLover')[0],
+    finish =document.getElementsByClassName('finish')[0],
+    loveTitle =document.getElementsByClassName('love-title')[0];
+    nextobj.onclick = function () {
+        oneself.style.display ='none';
+        selfLover.style.display='block';
+        loveTitle.innerHTML ='理想对象';
+    }
+    finish.onclick = function () {
+        alert('finish');
+    }
+    function getStyle(obj,attr) {
+        if(window.getComputedStyle){
+            return window.getComputedStyle(obj,null)[attr];
+        }else{
+            return obj.currentStyle[attr];
+        }
 
-
+    }
 </script>
 </body>
 </html>
