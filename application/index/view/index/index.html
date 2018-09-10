@@ -27,22 +27,7 @@
         </div>
     </div>
     <div class="content-secondary">
-        <style>
-            /**{*/
-                /*margin: 0;*/
-                /*padding: 0;*/
-            /*}*/
-            i{
-                color: #f40;
-            }
-            h1.love-title{
-                text-align: center;
-            }
-            .selfLover{
-                display: none;
-                /*width: 100%;*/
-            }
-        </style>
+
         <div class="container">
 
             <form action="" onsubmit="return false" class="form-horizontal">
@@ -56,13 +41,15 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">姓名<i>*</i></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="姓名" name="username">
+                            <input type="text" class="form-control auth" placeholder="姓名" name="username">
+                            <span class="error">姓名不能为空！</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">年龄<i>*</i></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="年龄" name="age">
+                            <input type="text" class="form-control auth" placeholder="年龄" name="age">
+                            <span class="error">年龄错误！</span>
                         </div>
                     </div>
                     <div  class="form-group">
@@ -84,29 +71,32 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">电话<i>*</i></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="telphone" name="tel">
+                            <input type="text" class="form-control auth" placeholder="telphone" name="tel">
+                            <span class="error">号码有误！</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">微信号<i>*</i></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="weChat" name="wechat">
+                            <input type="text" class="form-control auth" placeholder="weChat" name="wechat">
+                            <span class="error">微信号不能为空！</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">家乡<i>*</i></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="广东深圳市" name="hometown">
+                            <input type="text" class="form-control auth" placeholder="广东深圳市" name="hometown">
+                            <span class="error">家乡不能为空！</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">身高<i>*</i></label>
+                        <label class="col-sm-2 control-label">身高</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="身高cm" name="height">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">体重<i>*</i></label>
+                        <label class="col-sm-2 control-label">体重</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="体重kg" name="weight">
                         </div>
@@ -114,7 +104,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">职业<i>*</i></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="程序员" name="worker">
+                            <input type="text" class="form-control auth" placeholder="程序员" name="worker">
+                            <span class="error">请填写您的职业！</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -142,6 +133,7 @@
                                 <option>本科</option>
                                 <option>研究生及以上</option>
                             </select>
+                            <span class="error">请选择您的学历！</span>
                         </div>
                     </div>
 
@@ -150,72 +142,86 @@
                         <div class="col-sm-10">
                             <input type="file" id="exampleInputFile" style="display: none" name="face"/>
                             <button class="upload">上传图片</button>
-                            <img src="" class="imgg" style="width: 100%;display: none">
+                            <img src="" class="imgg" >
                         </div>
 
                     </div>
 
 
 
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <!--<div class="col-sm-offset-2 col-sm-10">-->
                         <a href="javascript:;" class="btn btn-default next" style="width: 100%;background-color: #4288ce">提交</a>
-                    </div>
+                    <!--</div>-->
 
                 </div>
 
                 <div class="selfLover" >
                     <div class="form-group">
-                        <label >家乡</label>
-                        <input type="text" class="form-control" placeholder="广东深圳市" name="lover-hometown">
+                        <label class="col-sm-2 control-label">家乡</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="广东深圳市" name="lover-hometown">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label >身高</label>
-                        <input type="text" class="form-control" placeholder="身高cm" name="lover-height">
+                        <label class="col-sm-2 control-label">身高</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="身高cm" name="lover-height">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label >体重</label>
-                        <input type="text" class="form-control" placeholder="体重kg" name="lover-weight">
+                        <label class="col-sm-2 control-label">体重</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="体重kg" name="lover-weight">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label >职业</label>
-                        <input type="text" class="form-control" placeholder="老师" name="lover-worker">
+                        <label class="col-sm-2 control-label">职业</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="老师" name="lover-worker">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label >月薪资范围</label>
-                        <select class="form-control" name="lover-salary">
-                            <option >请选择</option>
-                            <option >5k</option>
-                            <option>8K</option>
-                            <option>10K</option>
-                            <option>12K</option>
-                            <option>15K</option>
-                            <option>15K以上</option>
-                        </select>
+                        <label class="col-sm-2 control-label">月薪资范围</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="lover-salary">
+                                <option >请选择</option>
+                                <option >5k</option>
+                                <option>8K</option>
+                                <option>10K</option>
+                                <option>12K</option>
+                                <option>15K</option>
+                                <option>15K以上</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label >学历</label>
-                        <select class="form-control" name="lover-education">
-                            <option >请选择</option>
-                            <option >高中</option>
-                            <option>专科</option>
-                            <option>本科</option>
-                            <option>研究生及以上</option>
-                        </select>
+                        <label class="col-sm-2 control-label">学历</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="lover-education">
+                                <option >请选择</option>
+                                <option >高中</option>
+                                <option>专科</option>
+                                <option>本科</option>
+                                <option>研究生及以上</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label >年龄段</label>
-                        <select class="form-control" name="age-range">
-                            <option >无特定要求</option>
-                            <option >18-25</option>
-                            <option>25-30</option>
-                            <option>30-35</option>
-                            <option>35-40</option>
-                            <option>40-45</option>
-                            <option>45-50</option>
-                            <option>50以上</option>
-                        </select>
+                        <label class="col-sm-2 control-label">年龄段</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="age-range">
+                                <option >无特定要求</option>
+                                <option >18-25</option>
+                                <option>25-30</option>
+                                <option>30-35</option>
+                                <option>35-40</option>
+                                <option>40-45</option>
+                                <option>45-50</option>
+                                <option>50以上</option>
+                            </select>
+                        </div>
                     </div>
-                    <button class="btn defalut-btn finish" >提交</button>
+                    <button class="btn defalut-btn finish" style="width: 100%;">提交</button>
                 </div>
                 <!--<div class="checkbox">-->
                 <!--<label>-->
@@ -242,27 +248,7 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
-var nextobj =document.getElementsByClassName('next')[0],
-    oneself =document.getElementsByClassName('oneself')[0],
-    selfLover =document.getElementsByClassName('selfLover')[0],
-    finish =document.getElementsByClassName('finish')[0],
-    loveTitle =document.getElementsByClassName('love-title')[0];
-    nextobj.onclick = function () {
-        oneself.style.display ='none';
-        selfLover.style.display='block';
-        loveTitle.innerHTML ='理想对象';
-    }
-    finish.onclick = function () {
-        alert('finish');
-    }
-    function getStyle(obj,attr) {
-        if(window.getComputedStyle){
-            return window.getComputedStyle(obj,null)[attr];
-        }else{
-            return obj.currentStyle[attr];
-        }
 
-    }
 </script>
 </body>
 </html>

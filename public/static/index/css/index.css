@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("../img/bg.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.upload{
+    background: #0e90d2;
+    width: 80px;
+    height: 40px;
+    border-radius:10px ;
+    margin-bottom: 10px;
+}
+i{
+    color: #f40;
+}
+h1.love-title{
+    text-align: center;
+}
+.oneself{
+    margin-bottom: 50px;
+}
+.selfLover{
+    display: none;
+    /*height: 100%;*/
+    margin-bottom: 100px;
+}
+.imgg{
+    display: none;
+    width: 100%;
+
+}
+span.error{
+    display: none;
+    color: #00ff00;
+}
