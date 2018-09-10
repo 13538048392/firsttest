@@ -88,8 +88,7 @@ $(function () {
             fr = new FileReader();
         fr.readAsDataURL(file);
         fr.onload = function (evt) {
-            //base64
-            // console.log(evt.target.result);
+
             $('.imgg').attr({'src': evt.target.result});
             $('.imgg').css({'display':'block'});
         };
@@ -104,7 +103,7 @@ $(function () {
             processData: false,                // jQuery不要去处理发送的数据
             contentType: false,                // jQuery不要去设置Content-Type请求头
             success:function (data) {           //成功回调
-                console.log(data);
+                $('[name=face]').val(data);
             }
         });
     });
