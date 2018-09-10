@@ -9,14 +9,27 @@ class Index
     {
         if (request()->isPost()) {
            parse_str($_POST['data'],$data);
-           dump($data);
+           if(model('member')->add($data)){
+               echo 'ok';
+           }else{
+               echo 'error';
+           }
+
 
         }else{
             return view();
         }
 
     }
+    public function test(){
+        $data =['height'=>'152'];
+        model('member')->add($data);
+        echo model('member')->getLastSql();
 
+
+
+//        model('member')->add($data);
+    }
     public function upload()
     {
 
@@ -37,9 +50,9 @@ class Index
         }
 
     }
-    public function test(){
-        $mailer =new \Mailer();
-        $mailer->send('1642504508@qq.com','你好','是的，很好');
-
-    }
+//    public function test(){
+//        $mailer =new \Mailer();
+//        $mailer->send('1642504508@qq.com','你好','是的，很好');
+//
+//    }
 }
