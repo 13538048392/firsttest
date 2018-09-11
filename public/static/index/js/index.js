@@ -95,7 +95,7 @@ $(function () {
         var fm = new FormData();
         fm.append('touxiang',file);
         $.ajax({
-            url: '/index/upload',
+            url: '/index.php/index/index/upload',
             type: 'POST',
             data: fm,                    // 上传formdata封装的数据
             // dataType: 'JSON',
