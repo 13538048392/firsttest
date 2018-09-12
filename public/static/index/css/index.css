@@ -44,9 +44,9 @@ span.error{
 
     margin-bottom:50px;
 }
-.end .toubu{
+.end .heart{
     border-radius: 50%;
-    background: url("../img/easylove.jpg") no-repeat;
+
     -webkit-background-size: 100%;
     background-size: 100%;
     /*width: 100%;*/
@@ -55,5 +55,7 @@ span.error{
 .end .body{
     text-indent: 5em;
     color: #8484CA;
+    margin-top: -100px ;
+    margin-bottom: 150px ;
     padding:0 10px;
 }
