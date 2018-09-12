@@ -31,7 +31,7 @@
         <div class="container">
 
             <form action="" onsubmit="return false" class="form-horizontal">
-                <div class="oneself" >
+                <div class="oneself" style="display: none;">
                     <!--<div class="form-group">-->
                         <!--<label for="inputPassword3" class="col-sm-2 control-label">Password</label>-->
                         <!--<div class="col-sm-10">-->
@@ -46,10 +46,26 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">年龄<i>*</i></label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control auth" placeholder="年龄" name="age">
-                            <span class="error">年龄错误！</span>
+                        <label class="col-sm-2 control-label">出生日期<i>*</i></label>
+                        <div class="col-sm-10" >
+                            <div class="col-sm-3" style="margin-bottom: 10px">
+                                <select class="form-control year"  name="YYYY" onchange="YYYYDD(this.value)">
+                                    <option value="" selected>请选择 年</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3"  style="margin-bottom: 10px">
+                                <select class="form-control month" name="MM" onchange="MMDD(this.value)">
+                                    <option value="" selected>选择 月</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select class="form-control day" name="DD">
+                                    <option value="" selected>选择 日</option>
+                                </select>
+                            </div>
+
+                            <!--<input type="text" class="form-control " placeholder="年龄" name="age">-->
+                            <!--<span class="error">年龄错误！</span>-->
                         </div>
                     </div>
                     <div  class="form-group">
@@ -156,7 +172,7 @@
 
                 </div>
 
-                <div class="selfLover" >
+                <div class="selfLover" style="display: none;">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">家乡</label>
                         <div class="col-sm-10">
@@ -232,6 +248,12 @@
 
 
             </form>
+            <div class="end" style="display: block">
+                <div class="toubu"></div>
+                <div class="body">
+                   <h1> 很高兴，您成为我们的会员，我们会在<i>Easy Love</i> 公众号发布相亲活动，请及时留意！！！</h1>
+                </div>
+            </div>
 
         </div>
 
@@ -244,6 +266,7 @@
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="__STATIC__/index/js/date.js"></script>
 <script src="__STATIC__/index/js/index.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
