@@ -1,0 +1,112 @@
+.heart {
+    position: relative;
+    left: 10%;
+    top:20px;
+    /*background: url("../img/easylove.jpg") no-repeat;*/
+    /*background-size: 100%;*/
+    /*opacity: 0.5;*/
+    width: 280px;
+    height: 230px;
+
+}
+.heart::before {
+    content: "";
+    position: absolute;
+    left: 140px;
+    top: 0;
+    width: 140px;
+    height: 230px;
+    background: red;
+    border-radius: 100px 100px 0 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+.heart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 140px;
+    height: 230px;
+    background: red;
+    border-radius: 100px 100px 0 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: right bottom;
+    -moz-transform-origin: right  bottom ;
+    -o-transform-origin: right  bottom;
+    transform-origin: right  bottom;
+}
+.heart {
+    /*background-color: #8484CA;*/
+    /*width: 100px;*/
+    /*height: 100px;*/
+    -webkit-animation: jump 1s infinite ease-out;
+    -moz-animation: jump 1s infinite ease-out;
+    -o-animation: jump 1s infinite ease-out;
+    animation: jump 1s infinite ease-out;
+}
+@-webkit-keyframes jump {
+    0%, 60%, 75%, 90%, 100% {
+        -webkit-transform: scale(1);
+    }
+    15% {
+        -webkit-transform: scale(0.6);
+    }
+    30% {
+        -webkit-transform: scale(1);
+    }
+    45% {
+        -webkit-transform: scale(0.7);
+    }
+}
+@-moz-keyframes jump {
+    0%, 60%, 75%, 90%, 100% {
+        -moz-transform: scale(1);
+    }
+    15% {
+        -moz-transform: scale(0.6);
+    }
+    30% {
+        -moz-transform: scale(1);
+    }
+    45% {
+        -moz-transform: scale(0.7);
+    }
+}
+@-o-keyframes jump {
+    0%, 60%, 75%, 90%, 100% {
+        -o-transform: scale(1);
+    }
+    15% {
+        -o-transform: scale(0.6);
+    }
+    30% {
+        -o-transform: scale(1);
+    }
+    45% {
+        -o-transform: scale(0.7);
+    }
+}
+@keyframes jump {
+    0%, 60%, 75%, 90%, 100% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(0.6);
+    }
+    30% {
+        transform: scale(1);
+    }
+    45% {
+        transform: scale(0.7);
+    }
+}
