@@ -10,6 +10,9 @@ use think\Model;
 class Member extends Model
 {
     public function add($data){
+        foreach ($data as $k=>$v){
+            $data[$k]=trim($v);
+        }
         $this->allowField(true)->save($data);
         return $this->id;
     }

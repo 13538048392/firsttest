@@ -4,7 +4,6 @@
 }
 body{
     background-image: url("../img/bg.jpg") ;
-
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -39,4 +38,22 @@ h1.love-title{
 span.error{
     display: none;
     color: #00ff00;
+}
+.end{
+    display: none;
+
+    margin-bottom:50px;
+}
+.end .toubu{
+    border-radius: 50%;
+    background: url("../img/easylove.jpg") no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    /*width: 100%;*/
+    height: 345px;
+}
+.end .body{
+    text-indent: 5em;
+    color: #8484CA;
+    padding:0 10px;
 }

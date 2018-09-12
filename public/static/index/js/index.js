@@ -11,9 +11,9 @@ $(function () {
     $('input[name=wechat]').blur(function () {
         require($(this));
     })
-    $('input[name=age]').blur(function () {
-        age($(this));
-    })
+    // $('input[name=age]').blur(function () {
+    //     age($(this));
+    // })
     $('input[name=tel]').blur(function () {
         tel($(this));
     })
@@ -36,12 +36,12 @@ $(function () {
         !test ? obj.next().show():obj.next().hide();
         !test ? flag=false : flag=true;
     }
-    function age(obj) {
-        var val =obj.val().trim();
-        var test =/^\d{2}$/.test(val);
-        !test ? obj.next().show():obj.next().hide();
-        !test ? flag=false : flag=true;
-    }
+    // function age(obj) {
+    //     var val =obj.val().trim();
+    //     var test =/^\d{2}$/.test(val);
+    //     !test ? obj.next().show():obj.next().hide();
+    //     !test ? flag=false : flag=true;
+    // }
     function require(obj) {
         var val =obj.val().trim().length;
         !val ? obj.next().show():obj.next().hide();
@@ -51,6 +51,7 @@ $(function () {
         oneself =document.getElementsByClassName('oneself')[0],
         selfLover =document.getElementsByClassName('selfLover')[0],
         finish =document.getElementsByClassName('finish')[0],
+        end =document.getElementsByClassName('end')[0],
         loveTitle =document.getElementsByClassName('love-title')[0];
     nextobj.onclick = function () {
         if($('[name=education]').val() == '请选择'){
@@ -67,7 +68,11 @@ $(function () {
     finish.onclick = function () {
         var formData =$('form').serialize();
         $.post('/',{'data':formData},function (data) {
-            console.log(data);
+           if(data =='ok'){
+               selfLover.style.display='none';
+               end.style.display='block';
+               loveTitle.innerHTML ='EASY LOVE';
+           }
         });
         // alert('finish');
     }

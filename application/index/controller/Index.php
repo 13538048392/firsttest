@@ -8,7 +8,15 @@ class Index
     public function index()
     {
         if (request()->isPost()) {
+            //处理数据
            parse_str($_POST['data'],$data);
+           $data['birth_date'] = $data['YYYY'].'-'.$data['MM'].'-'.$data['DD'];
+           unset($data['MM']);
+           unset($data['DD']);
+           $data['age']=date('Y')-$data['YYYY'];
+           unset($data['YYYY']);
+           $data['create_time']=date('Y-m-d H:i:s');
+           //调用模型插入数据
            if(model('member')->add($data)){
                echo 'ok';
            }else{
