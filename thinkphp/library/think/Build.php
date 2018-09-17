@@ -378,7 +378,7 @@ class Build
      */
     protected function buildCommon($module)
     {
-        $filename = $this->app->getConfigPath() . ($module ? $module . DIRECTORY_SEPARATOR : '') . 'app.php';
+        $filename = $this->app->getConfigPath() . ($module ? $module . DIRECTORY_SEPARATOR : '') . 'captcha.php';
         $this->checkDirBuild(dirname($filename));
 
         if (!is_file($filename)) {

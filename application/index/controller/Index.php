@@ -25,6 +25,7 @@ class Index
 
 
         }else{
+
             return view();
         }
 
