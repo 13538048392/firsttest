@@ -10,10 +10,38 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-09-17 18:37:51
+Date: 2018-09-21 19:38:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `love_admin_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `love_admin_user`;
+CREATE TABLE `love_admin_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` char(32) NOT NULL,
+  `last_login_ip` varchar(30) NOT NULL,
+  `last_login_time` int(10) unsigned NOT NULL,
+  `listorder` int(8) NOT NULL DEFAULT '0',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0普通的，-1删除的，1正常的',
+  `create_time` int(10) NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of love_admin_user
+-- ----------------------------
+INSERT INTO `love_admin_user` VALUES ('1', 'Lwroot', 'bfd7bf18c2900cddc3ae25ff0f9d4099', '', '0', '0', '1', '0', '0');
+INSERT INTO `love_admin_user` VALUES ('2', '', 'aa1cd52b96d0be34e5f73a1b6bc5fda1', '', '0', '0', '1', '0', '0');
+INSERT INTO `love_admin_user` VALUES ('3', '', 'aa1cd52b96d0be34e5f73a1b6bc5fda1', '', '0', '0', '1', '0', '0');
+INSERT INTO `love_admin_user` VALUES ('4', '', 'aa1cd52b96d0be34e5f73a1b6bc5fda1', '', '0', '0', '1', '0', '0');
+INSERT INTO `love_admin_user` VALUES ('5', 'hannan', 'bfd7bf18c2900cddc3ae25ff0f9d4099', '', '0', '0', '1', '0', '0');
+INSERT INTO `love_admin_user` VALUES ('6', 'hannan', 'bfd7bf18c2900cddc3ae25ff0f9d4099', '', '0', '0', '1', '1537176464', '1537176464');
 
 -- ----------------------------
 -- Table structure for `love_member`
