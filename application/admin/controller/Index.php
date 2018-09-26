@@ -5,9 +5,9 @@ use think\Controller;
 
 class Index extends Controller
 {
+    protected $middleware =['Check'];
     public function index()
     {
-        //halt(session(config('admin.session_user'), '', config('admin.session_user_scope')));
         return $this->fetch();
     }
 

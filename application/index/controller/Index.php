@@ -29,20 +29,8 @@ class Index
         }
 
     }
-    public function test(){
-        $arr =[10,12,11,13];
-        $farr = array_filter($arr,$this->filter());
-        dump($farr);
 
 
-
-//        model('member')->add($data);
-    }
-    public function filter($v){
-        if($v>12){
-            return true;
-        }
-    }
     public function upload()
     {
 

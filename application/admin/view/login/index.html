@@ -64,7 +64,8 @@
 <script>
   // 刷新验证码
   function reloadcode(obj) {
-    obj.src="/captcha?id="+Math.random();
+    // obj.src="/captcha?id="+Math.random();
+    obj.src="{:url('verify');}?id="+Math.random();
   }
 </script>
 </body>
