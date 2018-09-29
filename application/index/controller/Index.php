@@ -29,15 +29,8 @@ class Index
         }
 
     }
-    public function test(){
-        $data =['height'=>'152'];
-        model('member')->add($data);
-        echo model('member')->getLastSql();
 
 
-
-//        model('member')->add($data);
-    }
     public function upload()
     {
 
