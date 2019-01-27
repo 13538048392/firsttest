@@ -36,7 +36,7 @@ class Index
 
 
          $file =request()->file('touxiang');
-         $info =$file->move('./static/uploads');
+         $info =$file->move('../uploads');
         if($info){
             // 成功上传后 获取上传信息
             // 输出 jpg
