@@ -5,7 +5,7 @@ use think\Controller;
 
 class Index extends Controller
 {
-    protected $middleware =['Check'];
+//    protected $middleware =['Check'];
     public function index()
     {
         return $this->fetch();

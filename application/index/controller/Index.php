@@ -51,9 +51,16 @@ class Index
         }
 
     }
-//    public function test(){
+    public function test(){
 //        $mailer =new \Mailer();
 //        $mailer->send('1642504508@qq.com','你好','是的，很好');
-//
-//    }
+//            $test = new \app\common\Test();
+//            echo $test->hello('你妹');
+//            echo \app\facade\Test::hello('好吧');
+//        \think\facade\Cache::set('name','熊爱红');
+//        echo \think\facade\Cache::get('name');
+//        \think\facade\Hook::add('gg',['app\\index\\behavior\\Test']);
+//        \think\facade\Hook::listen('gg');
+        echo 'test';
+    }
 }

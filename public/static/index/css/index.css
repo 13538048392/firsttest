@@ -59,3 +59,14 @@ span.error{
     margin-bottom: 150px ;
     padding:0 10px;
 }
+.finish,.next{
+    width: 88% !important;
+    margin-left:13%;
+    display: block;
+}
+@media screen and (max-width: 765px) {
+   .finish, .next{
+        width: 100% !important;
+        margin-left:0px;
+    }
+}
