@@ -12,9 +12,9 @@
 // 应用行为扩展定义文件
 return [
     // 应用初始化
-    'app_init'     => ['app\\index\\behavior\\Test'],
+//    'app_init'     => ['app\\index\\behavior\\Test'],
     // 应用开始
-    'app_begin'    => ['app\\index\\behavior\\Begin'],
+//    'app_begin'    => ['app\\index\\behavior\\Begin'],
     // 模块初始化
     'module_init'  => [],
     // 操作开始执行

@@ -16,4 +16,7 @@ class Member extends Model
         $this->allowField(true)->save($data);
         return $this->id;
     }
+    public function lst($where = []){
+        return $this->where($where)->order('id','desc')->select();
+    }
 }
