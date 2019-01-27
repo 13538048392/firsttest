@@ -3,20 +3,40 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 会员管理 <span class="c-gray en">&gt;</span> 会员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
   <div class="text-c">
-    <form action="{:url('news/index')}" method="get">
+    <form action="{:url('member/index')}" onsubmit="return false" name="form">
 	 <span class="select-box inline">
-		<select name="catid" class="select">
-          <option value="0">全部分类</option>
+		  <select name="salary" class="select">
+          <option value="0">薪资分类</option>
 
+            <option >5k</option>
+            <option>5-8K</option>
+            <option>8-10K</option>
+            <option>10-12K</option>
+            <option>12-15K</option>
+            <option>15-20K</option>
+            <option>20K以上</option>
 
         </select>
-		</span> 日期范围：
-      <input type="text" name="start_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value="" style="width:120px;" >
-      -
-      <input type="text" name="end_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value=""  style="width:120px;">
+		</span>
+      <span class="select-box inline">
+		  <select name="education" class="select">
+          <option value="">学历分类</option>
 
-      <input type="text" name="title" id="" value="" placeholder="会员名称" style="width:250px" class="input-text">
-      <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+             <option >高中</option>
+              <option>专科</option>
+              <option>本科</option>
+              <option>研究生及以上</option>
+
+        </select>
+		</span>
+      <!--日期范围：-->
+      <!--<input type="text" name="start_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value="" style="width:120px;" >-->
+      <!-- - -->
+      <!--<input type="text" name="end_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value=""  style="width:120px;">-->
+
+      <input type="text" name="username" id="" value="" placeholder="会员名称" style="width:250px" class="input-text">
+
+      <button name="" id="search" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </form>
   </div>
 
@@ -40,10 +60,10 @@
         <th width="120">操作</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody id="template">
+      {volist name="data" id="vo"}
+      <tr class="text-c" >
 
-      <tr class="text-c">
-        {volist name="data" id="vo"}
         <td><input type="checkbox" value="" name=""></td>
         <td>{$vo.id}</td>
         <td class="text-l"><u style="cursor:pointer" class="text-primary"  title="查看">{$vo.username}</u></td>
@@ -79,9 +99,50 @@
 <script type="text/javascript" src="__STATIC__/hadmin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="__STATIC__/hadmin/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
+  $("#search").on('click',function(){
+      var formData =$('form').serialize();
+      var url = '{:url("member/index")}';
+      $.post(url,{'data':formData},function (data) {
 
+          var tbody =$('#template');
+          if($(data).size() == 0){
+              return alert('无数据')
+          }else {
+              tbody.html('');
+          };
+          $(data).each(function ($k,$vo) {
+             
+              src = "/static/uploads/" + $vo.face;
 
+              str = " <tr class=\"text-c\" >\n" +
+                  "\n" +
+                  "        <td><input type=\"checkbox\" value=\"\" name=\"\"></td>\n" +
+                  "        <td>"+$vo.id+"</td>\n" +
+                  "        <td class=\"text-l\"><u style=\"cursor:pointer\" class=\"text-primary\"  title=\"查看\">"+ $vo.username+"</u></td>\n" +
+                  "        <td>"+$vo.birth_date+"</td>\n" +
+                  "        <td>"+$vo.sex+"</td>\n" +
+                  "        <td>"+$vo.tel+"</td>\n" +
+                  "        <td>"+$vo.wechat+"</td>\n" +
+                  "        <td>"+$vo.hometown+"</td>\n" +
+                  "        <td>"+$vo.worker+"</td>\n" +
+                  "        <td>"+$vo.salary+"</td>\n" +
+                  "        <td>"+$vo.education+"</td>\n" +
+                  "\n" +
+                  "        <td><img width=\"60\" height=\"60\" class=\"picture-thumb\" src=\"__STATIC__/uploads/"+$vo.face+"\"></td>\n" +
+                  "        <td>"+$vo.create_time+"</td>\n" +
+                  "\n" +
+                  "        <td class=\"f-14 td-manage\">\n" +
+                  "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"article_edit('资讯编辑','article-add.html','10001')\" href=\"javascript:;\" title=\"编辑\"><i class=\"Hui-iconfont\">&#xe6df;</i></a>\n" +
+                  "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"app_del(this)\" href=\"javascript:;\" title=\"删除\" del_url=\"{:url('member/delete')}?id="+$vo.id+"\"><i class=\"Hui-iconfont\">&#xe6e2;</i></a>\n" +
+                  "        </td>\n" +
+                  "      </tr>";
 
+            tbody.append(str);
+            tbody.children("tr:last-child").find('img').attr("src",src);
+
+          });
+      });
+  });
 
 </script>
 <style>
