@@ -20,9 +20,9 @@ class Login extends Controller
     public function check(){
         if (request()->isPost()){
             $data = input('post.');
-            if(!captcha_check($data['code'])){
-                $this->error('验证码错误');
-            }
+//            if(!captcha_check($data['code'])){
+//                $this->error('验证码错误');
+//            }
             $validate = validate('AdminUser');
             if (!$validate->check($data)){
                 $this->error($validate->getError());

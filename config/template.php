@@ -22,7 +22,6 @@ return [
     'view_path'    => '',
     'tpl_replace_string'  =>  [
         '__STATIC__'=>'/static',
-        '__UPLOADS__'=>'/../uploads',
 //        '__JS__' => '/static/javascript',
     ],
     // 模板后缀
