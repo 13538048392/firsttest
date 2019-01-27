@@ -10,4 +10,6 @@
 //$redis->connect('127.0.0.1',6379);
 //$redis->set('k1','nnd');
 // var_dump($redis->get('k1'));
-echo '10'>'9';
+$data['msg']=1;
+//echo $_GET['somfun'].'('.json_encode($data).')';
+echo $_GET['callback'].'('.json_encode($data).')';
