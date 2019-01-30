@@ -10,22 +10,24 @@ html,body{
     height: 100%;
 }
 .upload{
-    /*background: #0e90d2;*/
+    /*background: #0e90d2  #8486BB;*/
     /*background: #848689;*/
     width: 80px;
     height: 40px;
     border-radius:10px ;
-    border-top-color:  #8486BB;
-    border-left-color:  #8486BB;
+    background-color: transparent;
+    /*border-color: #ff4400;*/
+    /*border-width: 1px;*/
+    /*border-left-color:  #ff4400;*/
     margin-bottom: 10px;
-    box-shadow:inset -5px -3px 40px #8486BB,inset 5px 3px 40px #8486BB;
+    /*box-shadow:inset -5px -3px 40px #ff4400,inset 5px 3px 40px #ff4400;*/
 }
 i{
     color: #f40;
 }
 h1.love-title{
     text-align: center;
-    color:#8484CA ;
+    color:#ff3366;
 }
 .oneself{
     margin-bottom: 50px;
@@ -68,6 +70,15 @@ span.error{
     width: 88% !important;
     margin-left:13%;
     display: block;
+}
+.sub{
+    height: 38px;
+    font-size: 16px;
+    background-color: lightgreen;
+    font-weight: bold;
+    letter-spacing: 36px;
+    border-radius: 38px;
+    /*color: lightpink;*/
 }
 @media screen and (max-width: 765px) {
    .finish, .next{
