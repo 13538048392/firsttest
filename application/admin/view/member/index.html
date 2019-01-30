@@ -1,9 +1,48 @@
 <!--header-->
 {include file="public/_meta" title="娱乐资讯"/}
+<link rel="stylesheet" href="__STATIC__/admin/css/bootstrap.min.css">
+<style>
+  @font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('__STATIC__/admin/fonts/glyphicons-halflings-regular.eot');
+    src: url('__STATIC__/admin/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+        url('__STATIC__/admin/fonts/glyphicons-halflings-regular.woff') format('woff'),
+        url('__STATIC__/admin/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+        url('__STATIC__/admin/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  }
+.img{
+  width: 200px;
+  height: 270px;
+  border-radius:10px;
+  float: left;
+}
+  .modal-body li{
+    margin: 20px;
+    background-color: #0e90d2;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .modal-body li span{
+
+    padding: 15px;
+  }
+
+  /*.glyphicon {*/
+    /*position: relative;*/
+    /*top: 1px;*/
+    /*display: inline-block;*/
+    /*font-family: 'Glyphicons Halflings';*/
+    /*-webkit-font-smoothing: antialiased;*/
+    /*font-style: normal;*/
+    /*font-weight: normal;*/
+    /*line-height: 1;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+  /*}*/
+</style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 会员管理 <span class="c-gray en">&gt;</span> 会员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
   <div class="text-c">
-    <form action="{:url('member/index')}" onsubmit="return false" name="form">
+    <form action="{:url('member/lst')}" method="get" name="form" onsubmit="return false">
 	 <span class="select-box inline">
 		  <select name="salary" class="select">
           <option value="0">薪资分类</option>
@@ -29,12 +68,22 @@
 
         </select>
 		</span>
+      <span class="select-box inline">
+		  <select name="sex" class="select">
+          <option value="">男女分类</option>
+
+             <option >male</option>
+              <option>female</option>
+
+
+        </select>
+		</span>
       <!--日期范围：-->
       <!--<input type="text" name="start_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value="" style="width:120px;" >-->
       <!-- - -->
       <!--<input type="text" name="end_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value=""  style="width:120px;">-->
 
-      <input type="text" name="username" id="" value="" placeholder="会员名称" style="width:250px" class="input-text">
+      <input type="text" name="tel" id="" value="" placeholder="tel" style="width:250px" class="input-text">
 
       <button name="" id="search" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </form>
@@ -80,70 +129,195 @@
         <td>{$vo.create_time}</td>
 
         <td class="f-14 td-manage">
-          <a style="text-decoration:none" class="ml-5" onClick="article_edit('资讯编辑','article-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-          <a style="text-decoration:none" class="ml-5" onClick="app_del(this)" href="javascript:;" title="删除" del_url="{:url('member/delete', ['id'=>$vo.id])}"><i class="Hui-iconfont">&#xe6e2;</i></a>
+          <!--<a style="text-decoration:none" class="ml-5" onClick="article_edit('资讯编辑','article-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>-->
+          <a style="text-decoration:none" class="ml-5" onClick="modaldemo(this)" href="javascript:;" title="删除" data-url="{:url('member/getOne')}?id={$vo.id}"><i class="Hui-iconfont">&#xe717;</i></a>
         </td>
       </tr>
       {/volist}
 
       </tbody>
     </table>
+
+
     <div id="laypage"></div>
   </div>
+  <!--<div style="margin-left:400px">{$data|raw}</div>-->
+  <div id="page" style="margin-left:400px"><?php echo $page;?></div>
 
 </div>
+
 <!--header-->
 {include file="public/_footer" /}
+
+<div id="modal-demo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content radius">
+      <div class="modal-header">
+        <h3 class="modal-title">期望对象</h3>
+        <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+      </div>
+      <div class="modal-body">
+        <div ><img class="img" src="" alt=""></div>
+        <div class="right" style="position: absolute;left: 50%;">
+          <ul >
+            <li><span>学历</span><span>11</span></li>
+            <li><span>月薪</span><span></span></li>
+            <li><span>家乡</span><span></span></li>
+            <li><span>身高cm</span><span></span></li>
+            <li><span>体重kg</span><span></span></li>
+          </ul>
+        </div>
+
+        <div style="clear: both"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closemodal()">确定</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="closemodal()">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="__STATIC__/hadmin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="__STATIC__/hadmin/lib/laypage/1.2/laypage.js"></script>
+
 <script type="text/javascript">
+    function modaldemo(a){
+       var url = $(a).data('url');
+       $.get(url,function (data) {
+           $(".modal-body").find('img').attr('src','__STATIC__/uploads/'+data.face);
+           delete data.face;
+
+           var str= '';
+           for(var i in data){
+               str += `<li><span>${i}</span><span>${data[i]}</span></li>`;
+           }
+           $(".modal-body ul").html(str);
+
+       })
+        $("#modal-demo").modal("show")
+    }
+    function closemodal() {
+        $("#modal-demo").modal("hide")
+    }
+
+    var formData;
   $("#search").on('click',function(){
-      var formData =$('form').serialize();
-      var url = '{:url("member/index")}';
+      formData =$('form').serialize();
+      var url = '{:url("member/lst")}';
       $.post(url,{'data':formData},function (data) {
 
+          var list = data.data;
+
           var tbody =$('#template');
-          if($(data).size() == 0){
+          if($(list).size() == 0){
+              console.log(list);
               return alert('无数据')
           }else {
               tbody.html('');
           };
-          $(data).each(function ($k,$vo) {
+          $(list).each(function ($k,$vo) {
+              render(tbody,$vo);
+            //   src = "/static/uploads/" + $vo.face;
+            //
+            //   str = " <tr class=\"text-c\" >\n" +
+            //       "\n" +
+            //       "        <td><input type=\"checkbox\" value=\"\" name=\"\"></td>\n" +
+            //       "        <td>"+$vo.id+"</td>\n" +
+            //       "        <td class=\"text-l\"><u style=\"cursor:pointer\" class=\"text-primary\"  title=\"查看\">"+ $vo.username+"</u></td>\n" +
+            //       "        <td>"+$vo.birth_date+"</td>\n" +
+            //       "        <td>"+$vo.sex+"</td>\n" +
+            //       "        <td>"+$vo.tel+"</td>\n" +
+            //       "        <td>"+$vo.wechat+"</td>\n" +
+            //       "        <td>"+$vo.hometown+"</td>\n" +
+            //       "        <td>"+$vo.worker+"</td>\n" +
+            //       "        <td>"+$vo.salary+"</td>\n" +
+            //       "        <td>"+$vo.education+"</td>\n" +
+            //       "\n" +
+            //       "        <td><img width=\"60\" height=\"60\" class=\"picture-thumb\" src=\"__STATIC__/uploads/"+$vo.face+"\"></td>\n" +
+            //       "        <td>"+$vo.create_time+"</td>\n" +
+            //       "\n" +
+            //       "        <td class=\"f-14 td-manage\">\n" +
+            //       "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"article_edit('资讯编辑','article-add.html','10001')\" href=\"javascript:;\" title=\"编辑\"><i class=\"Hui-iconfont\">&#xe6df;</i></a>\n" +
+            //       "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"app_del(this)\" href=\"javascript:;\" title=\"删除\" del_url=\"{:url('member/delete')}?id="+$vo.id+"\"><i class=\"Hui-iconfont\">&#xe6e2;</i></a>\n" +
+            //       "        </td>\n" +
+            //       "      </tr>";
+            //
+            // tbody.append(str);
+            // tbody.children("tr:last-child").find('img').attr("src",src);
 
-              src = "/static/uploads/" + $vo.face;
+          });
 
-              str = " <tr class=\"text-c\" >\n" +
-                  "\n" +
-                  "        <td><input type=\"checkbox\" value=\"\" name=\"\"></td>\n" +
-                  "        <td>"+$vo.id+"</td>\n" +
-                  "        <td class=\"text-l\"><u style=\"cursor:pointer\" class=\"text-primary\"  title=\"查看\">"+ $vo.username+"</u></td>\n" +
-                  "        <td>"+$vo.birth_date+"</td>\n" +
-                  "        <td>"+$vo.sex+"</td>\n" +
-                  "        <td>"+$vo.tel+"</td>\n" +
-                  "        <td>"+$vo.wechat+"</td>\n" +
-                  "        <td>"+$vo.hometown+"</td>\n" +
-                  "        <td>"+$vo.worker+"</td>\n" +
-                  "        <td>"+$vo.salary+"</td>\n" +
-                  "        <td>"+$vo.education+"</td>\n" +
-                  "\n" +
-                  "        <td><img width=\"60\" height=\"60\" class=\"picture-thumb\" src=\"__STATIC__/uploads/"+$vo.face+"\"></td>\n" +
-                  "        <td>"+$vo.create_time+"</td>\n" +
-                  "\n" +
-                  "        <td class=\"f-14 td-manage\">\n" +
-                  "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"article_edit('资讯编辑','article-add.html','10001')\" href=\"javascript:;\" title=\"编辑\"><i class=\"Hui-iconfont\">&#xe6df;</i></a>\n" +
-                  "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"app_del(this)\" href=\"javascript:;\" title=\"删除\" del_url=\"{:url('member/delete')}?id="+$vo.id+"\"><i class=\"Hui-iconfont\">&#xe6e2;</i></a>\n" +
-                  "        </td>\n" +
-                  "      </tr>";
+          var page = "<nav id='Page_navigation' aria-label=\"Page navigation\">\n" +
+              "  <ul class=\"pagination\">\n" ;
+              // "    <li>\n" +
+              // "      <a href=\"#\" aria-label=\"Previous\">\n" +
+              // "        <span aria-hidden=\"true\">&laquo;</span>\n" +
+              // "      </a>\n" +
+              // "    </li>\n" +
+            for(var i= 1;i<=data.last_page;i++){
+                page += `<li><a href="/admin.php/member/litpage.html?${formData}&page=${i}">${i}</a></li>`;
 
-            tbody.append(str);
-            tbody.children("tr:last-child").find('img').attr("src",src);
+            }
+
+
+             page += "   " +
+              //    " <li>\n" +
+              // "      <a href=\"#\" aria-label=\"Next\">\n" +
+              // "        <span aria-hidden=\"true\">&raquo;</span>\n" +
+              // "      </a>\n" +
+              // "    </li>\n" +
+              "  </ul>\n" +
+              "</nav>"
+          $("#page").html(page);
+          $("#Page_navigation").find('a').on("click",function (e) {
+              $.get($(this).attr('href'),function (data) {
+                  if($(data).size() == 0){
+                      return alert('无数据')
+                  }else {
+                      tbody.html('');
+                  };
+                  $(data).each(function ($k,$vo) {
+
+                      render(tbody,$vo);
+                  });
+              });
+              return false;
 
           });
       });
   });
+function render(tbody,$vo) {
+    src = "/static/uploads/" + $vo.face;
 
+    str = " <tr class=\"text-c\" >\n" +
+        "\n" +
+        "        <td><input type=\"checkbox\" value=\"\" name=\"\"></td>\n" +
+        "        <td>"+$vo.id+"</td>\n" +
+        "        <td class=\"text-l\"><u style=\"cursor:pointer\" class=\"text-primary\"  title=\"查看\">"+ $vo.username+"</u></td>\n" +
+        "        <td>"+$vo.birth_date+"</td>\n" +
+        "        <td>"+$vo.sex+"</td>\n" +
+        "        <td>"+$vo.tel+"</td>\n" +
+        "        <td>"+$vo.wechat+"</td>\n" +
+        "        <td>"+$vo.hometown+"</td>\n" +
+        "        <td>"+$vo.worker+"</td>\n" +
+        "        <td>"+$vo.salary+"</td>\n" +
+        "        <td>"+$vo.education+"</td>\n" +
+        "\n" +
+        "        <td><img width=\"60\" height=\"60\" class=\"picture-thumb\" src=\"__STATIC__/uploads/"+$vo.face+"\"></td>\n" +
+        "        <td>"+$vo.create_time+"</td>\n" +
+        "\n" +
+        "        <td class=\"f-14 td-manage\">\n" +
+        "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"modaldemo(this)\" href=\"javascript:;\" title=\"删除\" data-url=\"{:url('member/getOne')}?id="+$vo.id+"\"><i class=\"Hui-iconfont\">&#xe717;</i></a>\n" +
+        "        </td>\n" +
+        "      </tr>";
+
+    tbody.append(str);
+    tbody.children("tr:last-child").find('img').attr("src",src);
+
+
+}
 </script>
 <style>
   .imooc-app .pagination li{display:inline; padding-left:10px;}

@@ -103,6 +103,7 @@ class Bootstrap extends Paginator
         return $html;
     }
 
+
     /**
      * 渲染分页html
      * @return mixed

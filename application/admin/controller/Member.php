@@ -5,21 +5,37 @@ use think\Controller;
 
 class Member extends Controller{
     public function index(){
+        $memLstData =model('index/member')->order('id','desc')->paginate(10);
+        $this->assign('data',$memLstData);
+        $this->assign('page',$memLstData->render());
+        return view('index');
+
+    }
+    public function lst(){
 
         $where = input('post.data');
-      if($where){
-        parse_str($where,$output);
-        $where =array_filter($output);
-         return $memLstData= model('index/member')->lst($where);
-//          halt($where);
-      }
-//
-//        halt($where);
 
-        $memLstData= model('index/member')->lst($where);
-//        halt($memLstData);
-        $this->assign('data',$memLstData);
-        return view('index');
-//        return $this->fetch();
+        if($where){
+            parse_str($where,$output);
+            $output['tel'] = trim($output['tel']);
+            $where =array_filter($output);
+
+            $data = model('index/member')->where($where)->order('id','desc')->paginate(10);
+            return $data;
+        }
+    }
+    public function litpage(){
+        $limit =10;
+        $data = input('get.');
+        $page = $data['page'];
+        $pre =($page-$limit)*$limit;
+        unset($data['page']);
+        $where =array_filter($data);
+        $data = model('index/member')->where($where)->order('id','desc')->limit($pre,$limit)->select();
+        return $data;
+    }
+    public function getOne(){
+        $id = input('get.');
+        return model('index/member')->field('face,lover_education,lover_height,lover_weight,lover_hometown,lover_salary')->where(['id'=>$id])->find();
     }
 }
