@@ -3,18 +3,22 @@
     padding: 0;
 }
 html,body{
-    background-image: url("../img/bg.jpg") ;
+    /*background-image: url("../img/bg.jpg") ;*/
+    background-color: lightpink;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
 }
 .upload{
     /*background: #0e90d2;*/
-    background: #8484CA;
+    /*background: #848689;*/
     width: 80px;
     height: 40px;
     border-radius:10px ;
+    border-top-color:  #8486BB;
+    border-left-color:  #8486BB;
     margin-bottom: 10px;
+    box-shadow:inset -5px -3px 40px #8486BB,inset 5px 3px 40px #8486BB;
 }
 i{
     color: #f40;
