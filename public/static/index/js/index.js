@@ -8,8 +8,8 @@ $(function () {
     $('input[name=username]').blur(function () {
         require($(this));
     })
-    $('input[name=wechat]').blur(function () {
-        require($(this));
+    $('input[name=email]').blur(function () {
+        email($(this));
     })
     // $('input[name=age]').blur(function () {
     //     age($(this));
@@ -36,12 +36,13 @@ $(function () {
         !test ? obj.next().show():obj.next().hide();
         !test ? flag=false : flag=true;
     }
-    // function age(obj) {
-    //     var val =obj.val().trim();
-    //     var test =/^\d{2}$/.test(val);
-    //     !test ? obj.next().show():obj.next().hide();
-    //     !test ? flag=false : flag=true;
-    // }
+    function email(obj) {
+        var val =obj.val().trim();
+        var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+        var test =reg.test(val);
+        !test ? obj.next().show():obj.next().hide();
+        !test ? flag=false : flag=true;
+    }
     function require(obj) {
         var val =obj.val().trim().length;
         !val ? obj.next().show():obj.next().hide();

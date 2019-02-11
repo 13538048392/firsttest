@@ -2,24 +2,23 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2018/9/10
- * Time: 15:53
+ * Date: 2019/2/11
+ * Time: 10:41
  */
-namespace app\index\model;
+namespace app\admin\model;
 use think\Model;
-class Member extends Model
+class MemberRemark extends Model
 {
     public function add($data){
         foreach ($data as $k=>$v){
             $data[$k]=trim($v);
         }
 
-        $this->allowField(true)->save($data);
-        return $this->id;
+       $res = $this->allowField(true)->save($data);
+        return $res;
+
     }
     public function lst($where = []){
-        return $this->where($where)->order('id','desc')->select(
-
-        );
+        return $this->where($where)->order('create_time','desc')->select();
     }
 }

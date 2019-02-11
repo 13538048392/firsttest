@@ -16,17 +16,22 @@
   border-radius:10px;
   float: left;
 }
-  .modal-body li{
+  .modal-body .msg li{
     margin: 20px;
     background-color: #0e90d2;
     font-size: 18px;
     font-weight: bold;
   }
-  .modal-body li span{
+  .modal-body  li span{
 
     padding: 15px;
   }
+  .modal-body .remarks li{
+    margin: 20px;
+    border: 1px solid #666;
+    font-size: 18px;
 
+  }
   /*.glyphicon {*/
     /*position: relative;*/
     /*top: 1px;*/
@@ -99,7 +104,7 @@
         <th width="80">出生日期</th>
         <th width="80">性别</th>
         <th width="80">手机</th>
-        <th width="80">微信</th>
+        <th width="80">邮箱</th>
         <th width="60">家乡</th>
         <th width="120">职业</th>
         <th width="120">月薪收入范围</th>
@@ -119,7 +124,7 @@
         <td>{$vo.birth_date}</td>
         <td>{$vo.sex}</td>
         <td>{$vo.tel}</td>
-        <td>{$vo.wechat}</td>
+        <td>{$vo.email}</td>
         <td>{$vo.hometown}</td>
         <td>{$vo.worker}</td>
         <td>{$vo.salary}</td>
@@ -129,7 +134,7 @@
         <td>{$vo.create_time}</td>
 
         <td class="f-14 td-manage">
-          <!--<a style="text-decoration:none" class="ml-5" onClick="article_edit('资讯编辑','article-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>-->
+          <a style="text-decoration:none" class="ml-5" onClick="modaledit(this)" data-url="{:url('MemberRemark/remarkLstById')}?id={$vo.id}" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
           <a style="text-decoration:none" class="ml-5" onClick="modaldemo(this)" href="javascript:;" title="删除" data-url="{:url('member/getOne')}?id={$vo.id}"><i class="Hui-iconfont">&#xe717;</i></a>
         </td>
       </tr>
@@ -148,7 +153,7 @@
 
 <!--header-->
 {include file="public/_footer" /}
-
+<!--查看更多-->
 <div id="modal-demo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content radius">
@@ -159,7 +164,7 @@
       <div class="modal-body">
         <div ><img class="img" src="" alt=""></div>
         <div class="right" style="position: absolute;left: 50%;">
-          <ul >
+          <ul class="msg">
             <li><span>学历</span><span>11</span></li>
             <li><span>月薪</span><span></span></li>
             <li><span>家乡</span><span></span></li>
@@ -178,11 +183,73 @@
   </div>
 </div>
 
+<!--edit更多-->
+<div id="modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content radius">
+      <div class="modal-header">
+        <h3 class="modal-title">后台备注：</h3>
+        <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+      </div>
+      <div class="modal-body">
+
+        <!--<form action="{:url('member/lst')}" method="get" name="form" onsubmit="return false">-->
+        <input type="hidden" name="member_id" value="">
+          <textarea class="textarea" placeholder="参加活动履历..." rows="" cols="" name="remark"></textarea>
+          <ul class="remarks">
+
+          </ul>
+          <!--<input type="text" name="tel" id="" value="" placeholder="tel" style="width:250px" class="input-text">-->
+
+          <!--<button name="" id="edit" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>-->
+        <!--</form>-->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="remarkmodal()">确定</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="closemodal()">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="__STATIC__/hadmin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="__STATIC__/hadmin/lib/laypage/1.2/laypage.js"></script>
 
 <script type="text/javascript">
+    function remarkmodal() {
+        var remark = $('textarea[name=remark]').val();
+        var id = $('input[name=member_id]').val(),
+        url = "/admin.php/member_remark/addRemark.html",
+        data = "member_id="+id+"&remark="+remark;
+        $.post(url,data,function (data) {
+           if(data == true){
+               $("#modal-edit").modal("hide");
+           }
+        });
+        // console.log(id,remark);
+    }
+    function modaledit(a) {
+        var url = $(a).data('url');
+        id = url.substring(url.indexOf('?')+4);
+       $("input[name=member_id]").val(id);
+
+        $.get(url,function (data) {
+            var str= '';
+            for(var i in data){
+                var timestamp = new Date(data[i].create_time * 1000);
+                // var y = 1900+date.getYear();
+                // var m = "0"+(date.getMonth()+1);
+                // var d = "0"+date.getDate();
+                // var timestamp = y + "-" + m + '-' + d;
+                var date =timestamp.toLocaleDateString().replace(/\//g, "-") + " " + timestamp.toTimeString().substr(0, 8);
+                str += `<li><span>${data[i].remark}</span> <span>${date}</span></li>`;
+            }
+            $(".modal-body .remarks").html(str);
+        });
+
+        $("#modal-edit").modal("show");
+    }
     function modaldemo(a){
        var url = $(a).data('url');
        $.get(url,function (data) {
@@ -193,14 +260,16 @@
            for(var i in data){
                str += `<li><span>${i}</span><span>${data[i]}</span></li>`;
            }
-           $(".modal-body ul").html(str);
+           $(".modal-body .msg").html(str);
 
        })
         $("#modal-demo").modal("show")
     }
     function closemodal() {
         $("#modal-demo").modal("hide")
+        // $("#modal-edit").modal("hide")
     }
+
 
     var formData;
   $("#search").on('click',function(){
@@ -299,7 +368,7 @@ function render(tbody,$vo) {
         "        <td>"+$vo.birth_date+"</td>\n" +
         "        <td>"+$vo.sex+"</td>\n" +
         "        <td>"+$vo.tel+"</td>\n" +
-        "        <td>"+$vo.wechat+"</td>\n" +
+        "        <td>"+$vo.email+"</td>\n" +
         "        <td>"+$vo.hometown+"</td>\n" +
         "        <td>"+$vo.worker+"</td>\n" +
         "        <td>"+$vo.salary+"</td>\n" +
