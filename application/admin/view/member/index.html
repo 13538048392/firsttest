@@ -162,7 +162,7 @@
         <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
       </div>
       <div class="modal-body">
-        <div ><img class="img" src="" alt=""></div>
+        <div ><img class="img" src="__STATIC__/admin/img/timg.jpg" alt=""></div>
         <div class="right" style="position: absolute;left: 50%;">
           <ul class="msg">
             <li><span>学历</span><span>11</span></li>
@@ -238,10 +238,6 @@
             var str= '';
             for(var i in data){
                 var timestamp = new Date(data[i].create_time * 1000);
-                // var y = 1900+date.getYear();
-                // var m = "0"+(date.getMonth()+1);
-                // var d = "0"+date.getDate();
-                // var timestamp = y + "-" + m + '-' + d;
                 var date =timestamp.toLocaleDateString().replace(/\//g, "-") + " " + timestamp.toTimeString().substr(0, 8);
                 str += `<li><span>${data[i].remark}</span> <span>${date}</span></li>`;
             }
@@ -253,7 +249,9 @@
     function modaldemo(a){
        var url = $(a).data('url');
        $.get(url,function (data) {
-           $(".modal-body").find('img').attr('src','__STATIC__/uploads/'+data.face);
+           if(data.face){
+               $(".modal-body").find('img').attr('src','__STATIC__/uploads/'+data.face);
+           }
            delete data.face;
 
            var str= '';
