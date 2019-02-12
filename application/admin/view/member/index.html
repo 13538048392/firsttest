@@ -251,6 +251,8 @@
        $.get(url,function (data) {
            if(data.face){
                $(".modal-body").find('img').attr('src','__STATIC__/uploads/'+data.face);
+           }else{
+               $(".modal-body").find('img').attr('src','__STATIC__/admin/img/timg.jpg');
            }
            delete data.face;
 
