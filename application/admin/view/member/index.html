@@ -83,6 +83,16 @@
 
         </select>
 		</span>
+      <span class="select-box inline">
+		  <select name="remark_count" class="select">
+          <option value="">活动经验</option>
+
+             <option value="1">有</option>
+              <option value="-1">无</option>
+
+
+        </select>
+		</span>
       <!--日期范围：-->
       <!--<input type="text" name="start_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value="" style="width:120px;" >-->
       <!-- - -->
@@ -99,17 +109,18 @@
       <thead>
       <tr class="text-c">
         <th width="25"><input type="checkbox" name="" value=""></th>
-        <th width="80">ID</th>
+        <th width="30">ID</th>
         <th width="80">姓名</th>
         <th width="80">出生日期</th>
         <th width="80">性别</th>
         <th width="80">手机</th>
         <th width="80">邮箱</th>
         <th width="60">家乡</th>
-        <th width="120">职业</th>
-        <th width="120">月薪收入范围</th>
-        <th width="120">学历</th>
+        <th width="100">职业</th>
+        <th width="100">月薪收入范围</th>
+        <th width="100">学历</th>
         <th width="120">本人照</th>
+        <th width="50">活动次数</th>
         <th width="120">注册时间</th>
         <th width="120">操作</th>
       </tr>
@@ -131,6 +142,7 @@
         <td>{$vo.education}</td>
 
         <td><img width="60" height="60" class="picture-thumb" src="__STATIC__/uploads/{$vo.face}"></td>
+        <td>{$vo.remark_count}</td>
         <td>{$vo.create_time}</td>
 
         <td class="f-14 td-manage">
@@ -276,7 +288,7 @@
       formData =$('form').serialize();
       var url = '{:url("member/lst")}';
       $.post(url,{'data':formData},function (data) {
-
+          console.log(data);
           var list = data.data;
 
           var tbody =$('#template');
@@ -375,9 +387,11 @@ function render(tbody,$vo) {
         "        <td>"+$vo.education+"</td>\n" +
         "\n" +
         "        <td><img width=\"60\" height=\"60\" class=\"picture-thumb\" src=\"__STATIC__/uploads/"+$vo.face+"\"></td>\n" +
+        "        <td>"+$vo.remark_count+"</td>\n" +
         "        <td>"+$vo.create_time+"</td>\n" +
         "\n" +
         "        <td class=\"f-14 td-manage\">\n" +
+        "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"modaledit(this)\" href=\"javascript:;\" title=\"删除\" data-url=\"{:url('MemberRemark/remarkLstById')}?id="+$vo.id+"\"><i class=\"Hui-iconfont\">&#xe6df;</i></a>\n" +
         "          <a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"modaldemo(this)\" href=\"javascript:;\" title=\"删除\" data-url=\"{:url('member/getOne')}?id="+$vo.id+"\"><i class=\"Hui-iconfont\">&#xe717;</i></a>\n" +
         "        </td>\n" +
         "      </tr>";

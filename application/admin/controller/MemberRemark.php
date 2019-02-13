@@ -12,7 +12,11 @@ use think\Controller;
 class MemberRemark extends Controller{
     public function addRemark(){
         $data = input('post.');
+        if($data['remark'] == ''){
+            return true;
+        }
         $data['create_time'] = time();
+       db("member")->where(['id'=>$data['member_id']])->setInc('remark_count');
         return model("MemberRemark")->add($data);
     }
     public function remarkLstById(){

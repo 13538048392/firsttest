@@ -19,8 +19,16 @@ class Member extends Controller{
             parse_str($where,$output);
             $output['tel'] = trim($output['tel']);
             $where =array_filter($output);
-
+            if(isset($where['remark_count'])){
+                if($where['remark_count'] == 1){
+                    unset($where['remark_count']);
+                  return  $data = model('index/member')->where($where)->where('remark_count > 0')->order('id','desc')->paginate(10);
+                }elseif ($where['remark_count'] == -1){
+                    $where['remark_count'] = 0;
+                };
+            }
             $data = model('index/member')->where($where)->order('id','desc')->paginate(10);
+
             return $data;
         }
     }
