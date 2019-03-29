@@ -9,6 +9,7 @@ $(function() {
         onUploadSuccess : function(file, data, response) {
             // 我们需要扩展内容
             if(response) {
+    
                 var obj = JSON.parse(data);
                 $('#upload_org_code_img').attr("src", obj.data);
                 $('#file_upload_image').attr("value", obj.data);

@@ -5,6 +5,9 @@ use duanxin\demo\sendSms;
 
 class Index
 {
+    public function active(){
+       return view();
+    }
     public function index()
     {
         if (request()->isPost()) {

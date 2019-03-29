@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    /*background-image: url("../img/bg.jpg") ;*/
+    background-color: lightpink;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+.wrapper{
+    margin-top: 10px;
+}
+.oneself{
+    margin-bottom: 50px;
+}
+span.error{
+    display: none;
+    color: #00ff00;
+}
+.sub{
+    height: 38px;
+    font-size: 16px;
+    background-color: lightgreen;
+    font-weight: bold;
+    letter-spacing: 36px;
+    border-radius: 38px;
+    /*color: lightpink;*/
+}

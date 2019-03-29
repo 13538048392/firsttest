@@ -151,7 +151,8 @@
             swf: '../Uploader.swf',
             chunked: false,
             chunkSize: 512 * 1024,
-            server: '../server/fileupload.php',
+            // server: '../server/fileupload.php',
+            server: '/admin.php/image/upload',
             // runtimeOrder: 'flash',
 
             // accept: {
