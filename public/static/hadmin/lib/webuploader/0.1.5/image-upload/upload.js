@@ -217,6 +217,8 @@
                     '<p class="title">' + file.name + '</p>' +
                     '<p class="imgWrap"></p>'+
                     '<p class="progress"><span></span></p>' +
+                    //Lw手动加入
+                    '<input class="zhaobo-filename" type="hidden" name="active_image[]">'+
                     '</li>' ),
 
                 $btns = $('<div class="file-panel">' +
@@ -486,7 +488,11 @@
 
             updateStatus();
         }
-
+        //lw 手动添加 上传成功后的接口
+        uploader.onUploadSuccess = function (file,response) {
+            console.log(response.data);
+            $("#" +file.id +" .zhaobo-filename").val(response.data)
+        }
         uploader.onUploadProgress = function( file, percentage ) {
             var $li = $('#'+file.id),
                 $percent = $li.find('.progress span');
